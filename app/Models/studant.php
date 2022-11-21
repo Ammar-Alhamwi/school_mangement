@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class studant extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -15,9 +15,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id' );
     }
-    public function studentinfo()
+    public function studantinfo()
     {
-        return $this->hasOne('App\Models\studentinfo');
+        return $this->hasOne('App\Models\studant_info');
     }
 }
 

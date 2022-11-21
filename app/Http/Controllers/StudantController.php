@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\studant;
 use Illuminate\Http\Request;
 use App\Models\Student;
-use Auth ;
+
+use Illuminate\Support\Facades\Auth;
 use App\Models\studentinfo;
 
 
@@ -17,28 +19,28 @@ class StudantController extends Controller
      */
     public function __construct()
     {
-    $this->middleware('auth'); // if users login can see it 
+    $this->middleware('auth'); // if users login can see it
     }
     public function index(Request $request)
     {
 
             $user=Auth::user();
         $id=Auth::id();
-        $studant=Student::where('user_id',Auth::id())->get();
+        $studant=studant::where('user_id',Auth::id())->get();
         if ($request->accept==1) {
             return view('studentinfo.index')->with('studant',$studant);
-           } 
-         
-        
+           }
+
+
             else  {
-            
-      
+
+
                 return view('student.notyet');
              }
-              
-              
-        
-        
+
+
+
+
     }
 
     /**
@@ -77,7 +79,7 @@ class StudantController extends Controller
         $newPhoto = time().$certificate->getClientOriginalName();
         $certificate->move('uploads/student',$newPhoto);
 
-        $studant= Student::create([
+        $studant= studant::create([
             'user_id' =>  Auth::id(),
             'name_studant' =>  $request->name_studant,
             'age' =>   $request->age,
@@ -86,9 +88,9 @@ class StudantController extends Controller
             'Address' =>   $request->Address,
             'accept'=>'0',
         ]);
-        
-        
-       
+
+
+
         return redirect()->back() ;
 
     }
@@ -100,12 +102,12 @@ class StudantController extends Controller
      */
     public function show($id)
     {
-        
+
     }
-            
-          
-               
-    
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -115,7 +117,7 @@ class StudantController extends Controller
      */
     public function edit($id)
     {
-        $Student = Student::where('id', $id)->first();
+        $Student = studant::where('id', $id)->first();
         return view('studentinfo.edit',compact('Student'));
     }
 
@@ -128,21 +130,21 @@ class StudantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
-        $Student = Student::where('id', $id)->first();
-        
+
+
+        $Student = studant::where('id', $id)->first();
+
         if ($request->has('photo')) {
             $photo = $request->photo;
             $newPhoto = time().$photo->getClientOriginalName();
             $photo->move('uploads/student',$newPhoto);
             $posts->photo ='uploads/student/'.$newPhoto ;
         }
-        $Student = new  Student;
+        $Student = new  studant;
         $Student->name_studant=$request->name_studant;
         $Student->user_id=Auth::id();
             $Student->age=$request->age;
-           
+
             $Student->certificate=$request->certificate;
             $Student->Address=$request->Address;
             $Student->save();

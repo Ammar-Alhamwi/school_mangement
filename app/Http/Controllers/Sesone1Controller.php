@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class Sesone1Controller extends Controller
 {
     public function index($id){
-
+        /*wqfwqfqf*/
         $sesone1 = sesone1::where('studant_id', $id)->get();
 
         $studant=studant::where('id',$id)->first();

@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         if (Auth::user()->rool==0) {
             $silder=slider::all();
-            return view('home');
+            return view('home',compact('silder'));
 
         }
 
