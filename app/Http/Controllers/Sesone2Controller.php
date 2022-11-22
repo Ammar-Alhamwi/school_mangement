@@ -17,4 +17,22 @@ class Sesone2Controller extends Controller
         $avg=sesone2::Where('studant_id', $id)->pluck('value')->avg();
         return view('sesone1',compact('sesone1'),compact('phot'),compact('avg'));
     }
+    public function create()
+    {
+
+        return view('studant.session2');
+    }
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'id' =>  'required',
+            'name_sub' =>  'required',
+            'value' =>  'required',
+        ]);
+        sesone2::create([
+            'studant_id' => $request->id,
+            'name_sub' => $request->name_sub,
+            'value' => $request->value,
+        ]);
+    }
 }

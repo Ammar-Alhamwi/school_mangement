@@ -19,28 +19,18 @@ class StudantController extends Controller
      */
     public function __construct()
     {
-    $this->middleware('auth'); // if users login can see it
+        $this->middleware('auth'); // if users login can see it
     }
     public function index(Request $request)
     {
-
-            $user=Auth::user();
-        $id=Auth::id();
-        $studant=studant::where('user_id',Auth::id())->get();
-        if ($request->accept==1) {
-            return view('studentinfo.index')->with('studant',$studant);
-           }
-
-
-            else  {
-
-
-                return view('student.notyet');
-             }
-
-
-
-
+        $user = Auth::user();
+        $id = Auth::id();
+        $studant = studant::where('user_id', Auth::id())->get();
+        if ($request->accept == 1) {
+            return view('studentinfo.index')->with('studant', $studant);
+        } else {
+            return view('student.notyet');
+        }
     }
 
     /**
@@ -61,38 +51,37 @@ class StudantController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name_studant' =>  'required',
             'age' =>  'required',
             'certificate' =>  'required|image',
             'Address' =>  'required',
             'photo' =>  'required|image',
-            'accept' =>'0'
+            'accept' => '0'
         ]);
-//save photo
+        //save photo
         $photo = $request->photo;
-        $newPhoto = time().$photo->getClientOriginalName();
-        $photo->move('uploads/student',$newPhoto);
-
+        $newPhoto = time() . $photo->getClientOriginalName();
+        $photo->move('uploads/student', $newPhoto);
         //save certificate
         $certificate = $request->certificate;
-        $newPhoto = time().$certificate->getClientOriginalName();
-        $certificate->move('uploads/student',$newPhoto);
-
-        $studant= studant::create([
+        $newPhoto = time() . $certificate->getClientOriginalName();
+        $certificate->move('uploads/student', $newPhoto);
+        $studant = studant::create([
             'user_id' =>  Auth::id(),
             'name_studant' =>  $request->name_studant,
             'age' =>   $request->age,
-            'photo' =>  'uploads/student/'.$newPhoto,
-            'certificate' =>  'uploads/student/'.$newPhoto,
-            'Address' =>   $request->Address,
-            'accept'=>'0',
+            'certificate' =>  'uploads/student/' . $newPhoto,
+            'accept' => '0',
         ]);
-
-
-
-        return redirect()->back() ;
-
+        $user_id = studant::latest()->first()->id;
+        studentinfo::create([
+            'user_id' => $user_id,
+            'photo' =>  'uploads/student/' . $newPhoto,
+            'invoice_number' => $request->invoice_number,
+            'Address' =>   $request->Address,
+        ]);
+        return redirect()->back();
     }
     /**
      * Display the specified resource.
@@ -102,7 +91,6 @@ class StudantController extends Controller
      */
     public function show($id)
     {
-
     }
 
 
@@ -118,7 +106,8 @@ class StudantController extends Controller
     public function edit($id)
     {
         $Student = studant::where('id', $id)->first();
-        return view('studentinfo.edit',compact('Student'));
+        $studentinfo=studentinfo::where('$student_id',$id);
+        return view('studentinfo.edit', compact('Student'),compact('studentinfo'));
     }
 
     /**
@@ -130,26 +119,22 @@ class StudantController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $Student = studant::where('id', $id)->first();
-
+        $studentinfo=studentinfo::where('student_id',$id);
         if ($request->has('photo')) {
             $photo = $request->photo;
-            $newPhoto = time().$photo->getClientOriginalName();
-            $photo->move('uploads/student',$newPhoto);
-            $Student->photo ='uploads/student/'.$newPhoto ;
+            $newPhoto = time() . $photo->getClientOriginalName();
+            $photo->move('uploads/student', $newPhoto);
+            $studentinfo->photo = 'uploads/student/' . $newPhoto;
         }
         $Student = new  studant;
-        $Student->name_studant=$request->name_studant;
-        $Student->user_id=Auth::id();
-            $Student->age=$request->age;
-
-            $Student->certificate=$request->certificate;
-            $Student->Address=$request->Address;
-            $Student->save();
+        $Student->name_studant = $request->name_studant;
+        $Student->user_id = Auth::id();
+        $Student->age = $request->age;
+        $Student->certificate = $request->certificate;
+        $studentinfo->Address = $request->Address;
+        $Student->save();
     }
-
     /**
      * Remove the specified resource from storage.
      *

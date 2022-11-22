@@ -16,8 +16,10 @@ class CreateStudantInfosTable extends Migration
         Schema::create('studant_infos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('studant_id')->unsigned();
-            $table->integer('class');
-            $table->integer('division');
+            $table->integer('class')->nullable();
+            $table->integer('division')->nullable();
+            $table->string('Address');
+            $table->string('photo');
             $table->timestamps();
             $table->foreign('studant_id')->references('id')->on('studants')->onDelete('cascade');
         });

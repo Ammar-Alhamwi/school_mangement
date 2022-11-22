@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class sesone2 extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'studant_id',
+        'name_sub',
+        'value'
+
+    ];
+
     public function sesone1(){
         return $this->belongsTo('App\Models\studant');
     }

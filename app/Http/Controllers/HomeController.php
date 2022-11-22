@@ -29,6 +29,10 @@ class HomeController extends Controller
             $silder=slider::all();
             return view('home',compact('silder'));
 
+        }else{
+
+            $silder=slider::all();
+            return view('home_admin',compact('silder'));
         }
 
 
