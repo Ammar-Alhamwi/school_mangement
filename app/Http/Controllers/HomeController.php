@@ -11,7 +11,6 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * fewfwefwefwq
      * @return void
      */
     public function __construct()
