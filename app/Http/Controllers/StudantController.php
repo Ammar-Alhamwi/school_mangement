@@ -138,7 +138,7 @@ class StudantController extends Controller
             $photo = $request->photo;
             $newPhoto = time().$photo->getClientOriginalName();
             $photo->move('uploads/student',$newPhoto);
-            $posts->photo ='uploads/student/'.$newPhoto ;
+            $Student->photo ='uploads/student/'.$newPhoto ;
         }
         $Student = new  studant;
         $Student->name_studant=$request->name_studant;
