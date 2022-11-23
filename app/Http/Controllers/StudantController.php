@@ -78,8 +78,9 @@ class StudantController extends Controller
         studentinfo::create([
             'user_id' => $user_id,
             'photo' =>  'uploads/student/' . $newPhoto,
-            'invoice_number' => $request->invoice_number,
+            'division' => $request->division,
             'Address' =>   $request->Address,
+            'class'=>$request->class
         ]);
         return redirect()->back();
     }
