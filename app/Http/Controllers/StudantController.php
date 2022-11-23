@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\studentinfo;
+
 
 
 class StudantController extends Controller
@@ -26,10 +26,12 @@ class StudantController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $studant = studant::where('user_id', Auth::id())->get();
+       
         if ($request->accept == 1) {
             return view('studentinfo.index')->with('studant', $studant);
-        } else {
-            return view('student.notyet');
+        }
+         elseif ($request->accept == 0){
+        return view('studentadminreg.index')->with('studant', $studant);
         }
     }
 
@@ -73,14 +75,12 @@ class StudantController extends Controller
             'age' =>   $request->age,
             'certificate' =>  'uploads/student/' . $newPhoto,
             'accept' => '0',
-        ]);
-        $user_id = studant::latest()->first()->id;
-        studentinfo::create([
-            'user_id' => $user_id,
             'photo' =>  'uploads/student/' . $newPhoto,
-            'invoice_number' => $request->invoice_number,
+            'division' => $request->division,
             'Address' =>   $request->Address,
+            'class' => $request->class,
         ]);
+        
         return redirect()->back();
     }
     /**
