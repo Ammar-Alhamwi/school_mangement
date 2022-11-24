@@ -18,10 +18,14 @@ class CreateStudantsTable extends Migration
             $table->timestamps();
             $table->bigInteger('user_id')->unsigned();
             $table->string('behaviour')->nullable();
-            $table->string('name_studant');
-            $table->string('age');
-            $table->string('certificate');
+            $table->string('name_studant')->nullabel();
+            $table->string('age')->nullabel();
+            $table->string('certificate')->nullable();
             $table->Integer('accept');
+            $table->integer('class')->nullable();
+            $table->integer('division')->nullable();
+            $table->string('Address')->nullable();
+            $table->string('photo')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

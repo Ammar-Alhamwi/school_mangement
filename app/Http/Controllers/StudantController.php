@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\studant;
+use App\Models\studant_info;
 use Illuminate\Http\Request;
 
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\studentinfo;
+
 
 
 class StudantController extends Controller
@@ -26,10 +27,12 @@ class StudantController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $studant = studant::where('user_id', Auth::id())->get();
+
         if ($request->accept == 1) {
             return view('studentinfo.index')->with('studant', $studant);
-        } else {
-            return view('student.notyet');
+        }
+         elseif ($request->accept == 0){
+        return view('studentadminreg.index')->with('studant', $studant);
         }
     }
 
@@ -73,15 +76,12 @@ class StudantController extends Controller
             'age' =>   $request->age,
             'certificate' =>  'uploads/student/' . $newPhoto,
             'accept' => '0',
-        ]);
-        $user_id = studant::latest()->first()->id;
-        studentinfo::create([
-            'user_id' => $user_id,
             'photo' =>  'uploads/student/' . $newPhoto,
             'division' => $request->division,
             'Address' =>   $request->Address,
-            'class'=>$request->class
+            'class'=>$request->class,
         ]);
+
         return redirect()->back();
     }
     /**
@@ -107,7 +107,7 @@ class StudantController extends Controller
     public function edit($id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo=studentinfo::where('$student_id',$id);
+        $studentinfo=studant_info::where('$student_id',$id);
         return view('studentinfo.edit', compact('Student'),compact('studentinfo'));
     }
 
@@ -121,7 +121,7 @@ class StudantController extends Controller
     public function update(Request $request, $id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo=studentinfo::where('student_id',$id);
+        $studentinfo=studant_info::where('student_id',$id);
         if ($request->has('photo')) {
             $photo = $request->photo;
             $newPhoto = time() . $photo->getClientOriginalName();

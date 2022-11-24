@@ -27,3 +27,8 @@ Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'ind
 Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route for register student 
+Route::get('/student/create', 'App\Http\Controllers\StudantController@create')->name('student.create');
+Route::post('/student/store', 'App\Http\Controllers\StudantController@store')->name('student.store');
+//Route for admin ((register_student))
+Route::get('index/register', 'App\Http\Controllers\StudantController@index');
