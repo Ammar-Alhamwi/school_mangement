@@ -31,4 +31,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/student/create', 'App\Http\Controllers\StudantController@create')->name('student.create');
 Route::post('/student/store', 'App\Http\Controllers\StudantController@store')->name('student.store');
 //Route for admin ((register_student))
-Route::get('index/register', 'App\Http\Controllers\StudantController@index');
+Route::get('index/register', 'App\Http\Controllers\StudantStatusController@index');
+Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' );
+Route::get('/post/restore/{id}', 'PostController@restore' )->name('post.restore');

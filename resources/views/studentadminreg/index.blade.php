@@ -6,7 +6,7 @@
       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
       <hr class="my-4">
       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href=" /index/productstrashed/" role="button">Trashe products </a>
+      {{-- <a class="btn btn-primary btn-lg" href=" /index/productstrashed/" role="button">Trashe products </a> --}}
     </div>
     <div class="contienr">
       
@@ -21,31 +21,35 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($studant as $iteam)
             @php
                 $i=0;
+                
             @endphp
 
-              
-@foreach($studant as $iteam)
-<tr>
+@if ($iteam->accept == 0){ //{{--جميع طلبات التسجيل --}}
+  <tr>
   <th scope="row">{{++$i}}</th>
   <td>{{$iteam->name_studant}}</td>
   <td>{{$iteam->age}}</td>
   
 
-  {{-- <td>{{$iteam->price}}</td>
-  <td>{{$iteam->details}}</td> --}}
-  <td>
+  
+   <td>
               <td>
-                
-                {{-- <td><a href="/Tags/edit/{{$iteam->id}}" type="button" class="btn btn-success">Edit</button> </td>
-                  <a href="{{ route('productes.show',$iteam->id)}}"> show </a>
-                  {{-- DELETE --}}
-                  {{-- <td><a href="/Tags/delete/{{$iteam->id}}" type="button" class="btn btn-danger">Delete</button></td>
+                 
+            {{-- //      <td><a href="/studant/edit/{{$iteam->id}}" type="button" class="btn btn-success">Edit</button> </td> --}}
+            {{-- //       <a href="{{ route('productes.show',$iteam->id)}}"> show </a> --}}
+                  {{--  Trash DELETE --}}
+               <td><a href="/Studant/Trashdelete/{{$iteam->id}}" type="button" class="btn btn-danger">Delete</button></td>
               </td>
              
-            {{-- </tr> --}}
-           @endforeach 
+            // {{-- </tr> --}}
+         
+            
           </tbody>
         </table>
-      
+        
+}
+@endif
+@endforeach 

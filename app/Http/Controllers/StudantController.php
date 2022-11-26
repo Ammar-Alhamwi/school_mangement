@@ -27,13 +27,11 @@ class StudantController extends Controller
         $id = Auth::id();
         $studant = studant::where('user_id', Auth::id())->get();
        
-        if ($request->accept == 1) {
+       
             return view('studentinfo.index')->with('studant', $studant);
         }
-         elseif ($request->accept == 0){
-        return view('studentadminreg.index')->with('studant', $studant);
-        }
-    }
+        
+    
 
     /**
      * Show the form for creating a new resource.

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class studant extends Model
 {
+    use SoftDeletes;
     use HasFactory;
     protected $fillable = [
         'class', 'division',  'photo', 'Address','name_studant', 'user_id', 'age','behaviour','accept','photo','certificate',
