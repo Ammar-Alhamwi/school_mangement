@@ -19,19 +19,25 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+//lgin admin and user
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//show mark sesone
 Route::get('/sesone1/{id}', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
 Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index'] );
-
-Route::get('/book', [App\Http\Controllers\BookController::class, 'index'] );
-Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'index'] );
-Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//create mark seson
 Route::get('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class,'create'])->name('student.sesone1');
 Route::post('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class,'store'])->name('student.sesone1');
 Route::get('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class,'create'])->name('student.sesone2');
 Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class,'store'])->name('student.sesone2');
+//show class
+Route::get('/book', [App\Http\Controllers\BookController::class, 'index'] );
+//shwo subject on class
+Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'index'] );
+//donlode book
+Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
+//show studant info
 Route::get('/show_info', [App\Http\Controllers\StudantController::class, 'show_info'])->name('show_info');
+//update and edit studante info
 Route::get('/edit_admin/{id}', [App\Http\Controllers\StudantController::class, 'edit_admin'])->name('edit_admin');
 Route::post('/update_admin', [App\Http\Controllers\StudantController::class, 'update_admin'])->name('update_admin');
 
