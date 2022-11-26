@@ -26,6 +26,7 @@ class CreateStudantsTable extends Migration
             $table->integer('division')->nullable();
             $table->string('Address')->nullable();
             $table->string('photo')->nullable();
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

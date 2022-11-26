@@ -94,6 +94,14 @@ class StudantController extends Controller
     }
 
 
+    public function edit_admin(){
+
+        return view('studentinfo.edit_admin');
+    }
+    public function update_admin(){
+
+
+    }
 
 
 
