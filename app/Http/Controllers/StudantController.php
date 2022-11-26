@@ -27,13 +27,8 @@ class StudantController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $studant = studant::where('user_id', Auth::id())->get();
-
-        if ($request->accept == 1) {
             return view('studentinfo.index')->with('studant', $studant);
-        } elseif ($request->accept == 0) {
-            return view('studentadminreg.index')->with('studant', $studant);
         }
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -92,13 +87,27 @@ class StudantController extends Controller
     public function show($id)
     {
     }
-
-
-    public function edit_admin(){
-
-        return view('studentinfo.edit_admin');
+    public function show_info($id)
+    {
+        $studentinfo = studant::where('id' , $id )->first();
+        return view('studentinfo.show')->with('studentinfo',$studentinfo);
     }
-    public function update_admin(){
+
+    public function edit_admin($id){
+        $studant=studant::all()->where('id',$id);
+
+        return view('studentinfo.edit_admin',compact('studant'));
+    }
+    public function update_admin(Request $request){
+        $this->validate($request, [
+            'class' =>  'required',
+            'division' =>  'required',
+        ]);
+        $studentinfo=studant::where('id',$request->id)->update([
+            'class'=>$request->class,
+            'division'=>$request->division
+        ]);
+        return view('studentinfo.edit_admin');
 
 
     }
@@ -114,7 +123,7 @@ class StudantController extends Controller
     public function edit($id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo = studant_info::where('$student_id', $id);
+
         return view('studentinfo.edit', compact('Student'), compact('studentinfo'));
     }
 
@@ -128,12 +137,12 @@ class StudantController extends Controller
     public function update(Request $request, $id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo = studant_info::where('student_id', $id);
+
         if ($request->has('photo')) {
             $photo = $request->photo;
             $newPhoto = time() . $photo->getClientOriginalName();
             $photo->move('uploads/student', $newPhoto);
-            $studentinfo->photo = 'uploads/student/' . $newPhoto;
+            $Student->photo = 'uploads/student/' . $newPhoto;
         }
         $Student = new  studant;
         $Student->name_studant = $request->name_studant;
