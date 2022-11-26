@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\studant;
-use App\Models\studant_info;
 use Illuminate\Http\Request;
 
 
@@ -27,8 +26,8 @@ class StudantController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $studant = studant::where('user_id', Auth::id())->get();
-            return view('studentinfo.index')->with('studant', $studant);
-        }
+        return view('studentinfo.index')->with('studant', $studant);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -89,27 +88,27 @@ class StudantController extends Controller
     }
     public function show_info($id)
     {
-        $studentinfo = studant::where('id' , $id )->first();
-        return view('studentinfo.show')->with('studentinfo',$studentinfo);
+        $studentinfo = studant::where('id', $id)->first();
+        return view('studentinfo.show')->with('studentinfo', $studentinfo);
     }
 
-    public function edit_admin($id){
-        $studant=studant::all()->where('id',$id);
+    public function edit_admin($id)
+    {
+        $studant = studant::all()->where('id', $id);
 
-        return view('studentinfo.edit_admin',compact('studant'));
+        return view('studentinfo.edit_admin', compact('studant'));
     }
-    public function update_admin(Request $request){
+    public function update_admin(Request $request)
+    {
         $this->validate($request, [
             'class' =>  'required',
             'division' =>  'required',
         ]);
-        $studentinfo=studant::where('id',$request->id)->update([
-            'class'=>$request->class,
-            'division'=>$request->division
+        $studentinfo = studant::where('id', $request->id)->update([
+            'class' => $request->class,
+            'division' => $request->division
         ]);
         return view('studentinfo.edit_admin');
-
-
     }
 
 
