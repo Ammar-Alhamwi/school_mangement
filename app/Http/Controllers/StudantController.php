@@ -30,9 +30,8 @@ class StudantController extends Controller
 
         if ($request->accept == 1) {
             return view('studentinfo.index')->with('studant', $studant);
-        }
-         elseif ($request->accept == 0){
-        return view('studentadminreg.index')->with('studant', $studant);
+        } elseif ($request->accept == 0) {
+            return view('studentadminreg.index')->with('studant', $studant);
         }
     }
 
@@ -79,7 +78,7 @@ class StudantController extends Controller
             'photo' =>  'uploads/student/' . $newPhoto,
             'division' => $request->division,
             'Address' =>   $request->Address,
-            'class'=>$request->class,
+            'class' => $request->class,
         ]);
 
         return redirect()->back();
@@ -107,8 +106,8 @@ class StudantController extends Controller
     public function edit($id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo=studant_info::where('$student_id',$id);
-        return view('studentinfo.edit', compact('Student'),compact('studentinfo'));
+        $studentinfo = studant_info::where('$student_id', $id);
+        return view('studentinfo.edit', compact('Student'), compact('studentinfo'));
     }
 
     /**
@@ -121,7 +120,7 @@ class StudantController extends Controller
     public function update(Request $request, $id)
     {
         $Student = studant::where('id', $id)->first();
-        $studentinfo=studant_info::where('student_id',$id);
+        $studentinfo = studant_info::where('student_id', $id);
         if ($request->has('photo')) {
             $photo = $request->photo;
             $newPhoto = time() . $photo->getClientOriginalName();
@@ -133,7 +132,7 @@ class StudantController extends Controller
         $Student->user_id = Auth::id();
         $Student->age = $request->age;
         $Student->certificate = $request->certificate;
-        $studentinfo->Address = $request->Address;
+        $Student->Address = $request->Address;
         $Student->save();
     }
     /**
