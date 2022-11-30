@@ -2,6 +2,7 @@
 @section('contact')
 <div class="jumbotron">
   <div class="jumbotron">
+   
       <h1 class="display-4">Hello, world!</h1>
       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
       <hr class="my-4">
@@ -43,7 +44,10 @@
                   {{--  Trash DELETE --}}
                <td><a href="/Studant/Trashdelete/{{$iteam->id}}" type="button" class="btn btn-danger">Delete</button></td>
               </td>
-             
+              {{--الموافقة على الطالب --}}
+              
+              <td><a href="/Studant/accept/{{$iteam->id}}" type="button" class="btn btn-danger">قبول</button></td>
+              </td>
             // {{-- </tr> --}}
          
             

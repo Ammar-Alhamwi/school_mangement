@@ -144,10 +144,8 @@ class StudantController extends Controller
             $Student->photo = 'uploads/student/' . $newPhoto;
         }
         $Student = new  studant;
-        $Student->name_studant = $request->name_studant;
+       
         $Student->user_id = Auth::id();
-        $Student->age = $request->age;
-        $Student->certificate = $request->certificate;
         $Student->Address = $request->Address;
         $Student->save();
     }

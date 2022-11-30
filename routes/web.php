@@ -48,4 +48,5 @@ Route::post('/student/store', 'App\Http\Controllers\StudantController@store')->n
 //Route for admin ((register_student))
 Route::get('index/register', 'App\Http\Controllers\StudantStatusController@index');
 Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' );
-Route::get('/post/restore/{id}', 'PostController@restore' )->name('post.restore');
+
+Route::get('/Studant/accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('student.accept');

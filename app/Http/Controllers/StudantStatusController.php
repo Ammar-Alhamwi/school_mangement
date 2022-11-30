@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\studant;
-use App\Models\studant_info;
+
 use Illuminate\Support\Facades\Auth;
 use App\softDeletes;
 class StudantStatusController extends Controller
@@ -22,17 +22,21 @@ class StudantStatusController extends Controller
         
             return view('studentadminreg.index')->with('studant', $studant);
         }
+        // رفض الطالب 
         public function SoftDelete( $id)
     {
         $studant = studant::find($id)->delete();
         
         return redirect()->back() ;
     }
-    public function restore( $id)
+    
+
+    // الموافقة على الطالب-> accept=1;
+    public function accept(Request $request, $id)
     {
-        $studant = studant::withTrashed()->where('id' ,  $id )->first() ;
-        $studant->restore();
-        return redirect()->back() ;
-    }
-         
+       
+    studant::where('id', $id)->update(array('accept' => '1'));
+    return redirect()->back();
+}
+
 }
