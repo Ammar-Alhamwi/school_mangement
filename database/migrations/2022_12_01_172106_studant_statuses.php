@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSesone1sTable extends Migration
+class StudantStatuses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateSesone1sTable extends Migration
      */
     public function up()
     {
-        Schema::create('sesone1s', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_sub');
-            $table->float('value');
+        if(Schema::hasTable('studant_statuses')) return; 
+        Schema::create('studant_statuses', function (Blueprint $table){
+        $table->id();
+            $table->integer('studant_statuse');
+            $table->string('note');
             $table->bigInteger('studant_id')->unsigned();
             $table->timestamps();
             $table->foreign('studant_id')->references('id')->on('studants')->onDelete('cascade');
-        });
-    }
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -30,6 +31,6 @@ class CreateSesone1sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sesone1s');
+        //
     }
 }

@@ -13,9 +13,9 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css>
     <link rel="stylesheet" href="css/line-icons.css">
-    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="style/home2.css">
     <link rel="stylesheet" href="style/nav.css">
-  
+   
    
     <title> school</title>
 </head>
@@ -55,11 +55,24 @@
                       <li class="menu-item">
                           <a href="#">المناهج الدراسية</a>
                       </li>
-
+                      <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu">ابنائي<i class="plus"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#">الابن الاول </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">الابن الثاني</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">الابن الثالث</a>
+                            </li>
+                        </ul>
+                    </li>
                      
                       <li class="menu-item menu-item-has-children">
                           <a href="#" data-toggle="sub-menu">انضم الينا<i class="plus"></i></a>
-                          <ul class="sub-menu">
+                            <ul class="sub-menu">
                               <li class="menu-item">
                                   <a href="#">تسجيل الدخول </a>
                               </li>
@@ -67,7 +80,7 @@
                                   <a href="#">انشاء حساب </a>
                               </li>
                       
-                          </ul>
+                             </ul>
                           
                       </li>
                   
@@ -223,7 +236,7 @@
         
           أهلا ومرحبا بكم في مدرستنا ..... المكان المناسب لطفلكم  
       </p>
-</!footer>
+</!--footer>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

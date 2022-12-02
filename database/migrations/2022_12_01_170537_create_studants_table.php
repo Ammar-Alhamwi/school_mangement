@@ -19,7 +19,9 @@ class CreateStudantsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('behaviour')->nullable();
             $table->string('name_studant')->nullabel();
+            $table->Integer('phone')->nullabel();
             $table->string('age')->nullabel();
+            $table->string('gender')->nullabel();
             $table->string('certificate')->nullable();
             $table->Integer('accept');
             $table->integer('class')->nullable();

@@ -47,35 +47,40 @@ class StudantController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name_studant' =>  'required',
-            'age' =>  'required',
-            'certificate' =>  'required|image',
-            'Address' =>  'required',
-            'photo' =>  'required|image',
-            'accept' => '0'
-        ]);
+        // $this->validate($request, [
+        //     'name_studant' =>  'required',
+        //     'age' =>  'required',
+        //     'certificate' =>  'required|image',
+        //     'Address' =>  'required',
+        //     'photo' =>  'required|image',
+        //     'accept' => '0',
+        //      'phone' =>'required',
+        //      'gender'=>'required',
+        // ]);
         //save photo
-        $photo = $request->photo;
-        $newPhoto = time() . $photo->getClientOriginalName();
+         $photo = $request->photo;
+         $newPhoto = time() . $photo->getClientOriginalName();
         $photo->move('uploads/student', $newPhoto);
-        //save certificate
-        $certificate = $request->certificate;
+        // //save certificate
+         $certificate = $request->certificate;
         $newPhoto = time() . $certificate->getClientOriginalName();
-        $certificate->move('uploads/student', $newPhoto);
-        $studant = studant::create([
-            'user_id' =>  Auth::id(),
-            'name_studant' =>  $request->name_studant,
-            'age' =>   $request->age,
-            'certificate' =>  'uploads/student/' . $newPhoto,
-            'accept' => '0',
-            'photo' =>  'uploads/student/' . $newPhoto,
-            'division' => $request->division,
-            'Address' =>   $request->Address,
-            'class' => $request->class,
-        ]);
+         $certificate->move('uploads/student', $newPhoto);
+        $new_student = new studant;
+        $new_student->user_id = Auth::id();
+        $new_student->name_studant = $request->name_studant;
+        $new_student->age=$request->age;
+        $new_student->accept=0;
+        $new_student->division=$request->division;
+         $new_student->class=$request->class;
+         $new_student->phone=$request->phone;
+          $new_student->gender=$request->gender;
+         $new_student->Address=$request->Address;
+         $new_student->photo='uploads/student/' . $newPhoto;
+         $new_student->certificate='uploads/student/' . $newPhoto;
+        $new_student->save();
+        return back();
 
-        return redirect()->back();
+         
     }
     /**
      * Display the specified resource.

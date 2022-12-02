@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('student.create');
 });
 
 Auth::routes();
@@ -43,8 +43,9 @@ Route::post('/update_admin', [App\Http\Controllers\StudantController::class, 'up
 
 
 //Route for register student
-Route::get('/student/create', 'App\Http\Controllers\StudantController@create')->name('student.create');
-Route::post('/student/store', 'App\Http\Controllers\StudantController@store')->name('student.store');
+
+Route::get('/studentreg', 'App\Http\Controllers\StudantController@create')->name('student.create');
+Route::post('/studentstore', 'App\Http\Controllers\StudantController@store')->name('studentstore');
 //Route for admin ((register_student))
 Route::get('index/register', 'App\Http\Controllers\StudantStatusController@index');
 Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' );
