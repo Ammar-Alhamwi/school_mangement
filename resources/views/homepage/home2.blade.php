@@ -17,7 +17,9 @@
         href="css/line-icons.css">
     <link rel="stylesheet" href="style/home2.css">
     <link rel="stylesheet" href="style/nav.css">
-    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Lateef&family=Lobster&family=Montserrat:ital,wght@0,100;0,200;1,100;1,300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Lateef&family=Lobster&family=Montserrat:ital,wght@0,100;0,200;1,100;1,300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style/foteer.css">
 
 
@@ -62,9 +64,15 @@
                     <li class="menu-item menu-item-has-children">
                         <a href="#" data-toggle="sub-menu">ابنائي<i class="plus"></i></a>
                         <ul class="sub-menu">
+
+                            <li class="menu-item">
+                                <a href="{{ route('student.create') }}">تسجيل طالب جديد</a>
+                            </li>
+
+
                             @foreach ($studant as $item)
                                 <li class="menu-item">
-                                    <a href="#">{{$item->name_studant}}</a>
+                                    <a href="#">{{ $item->name_studant }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -73,11 +81,21 @@
                     <li class="menu-item menu-item-has-children">
                         <a href="#" data-toggle="sub-menu">انضم الينا<i class="plus"></i></a>
                         <ul class="sub-menu">
-                            <li class="menu-item">
-                                <a href="{{ route('login') }}">تسجيل الدخول </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('register') }}">انشاء حساب </a>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="dropdown-item" href="{{ route('logout') }}"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('تسجيل الخروج') }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
 
                         </ul>
@@ -123,7 +141,8 @@
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>

@@ -14,10 +14,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -26,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()==false){
+
+            return view('homepage.home');
+        }
+
         if (Auth::user()->rool==0) {
             $silder=slider::all();
             $studant=studant::all()->where('user_id',Auth::user()->id);

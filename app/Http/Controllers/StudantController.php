@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\studant;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -79,7 +78,7 @@ class StudantController extends Controller
         $new_student->photo = 'uploads/student/' . $newPhoto;
         //$new_student->certificate = 'uploads/student/' . $newPhoto;
         $new_student->save();
-        return back();
+        return redirect()->route('home');
     }
     /**
      * Display the specified resource.
