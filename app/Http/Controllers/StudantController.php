@@ -47,6 +47,7 @@ class StudantController extends Controller
      */
     public function store(Request $request)
     {
+
         // $this->validate($request, [
         //     'name_studant' =>  'required',
         //     'age' =>  'required',
@@ -58,29 +59,27 @@ class StudantController extends Controller
         //      'gender'=>'required',
         // ]);
         //save photo
-         $photo = $request->photo;
-         $newPhoto = time() . $photo->getClientOriginalName();
+        $photo = $request->photo;
+        $newPhoto = time() . $photo->getClientOriginalName();
         $photo->move('uploads/student', $newPhoto);
         // //save certificate
-         $certificate = $request->certificate;
-        $newPhoto = time() . $certificate->getClientOriginalName();
-         $certificate->move('uploads/student', $newPhoto);
+        //$certificate = $request->certificate;
+        //$newPhoto = time() . $certificate->getClientOriginalName();
+        //$certificate->move('uploads/student', $newPhoto);
         $new_student = new studant;
         $new_student->user_id = Auth::id();
         $new_student->name_studant = $request->name_studant;
-        $new_student->age=$request->age;
-        $new_student->accept=0;
-        $new_student->division=$request->division;
-         $new_student->class=$request->class;
-         $new_student->phone=$request->phone;
-          $new_student->gender=$request->gender;
-         $new_student->Address=$request->Address;
-         $new_student->photo='uploads/student/' . $newPhoto;
-         $new_student->certificate='uploads/student/' . $newPhoto;
+        $new_student->age = $request->age;
+        $new_student->accept = 0;
+        $new_student->division = $request->division;
+        $new_student->class = $request->class;
+        //$new_student->phone = $request->phone;
+        $new_student->gender = $request->gender;
+        $new_student->Address = $request->Address;
+        $new_student->photo = 'uploads/student/' . $newPhoto;
+        //$new_student->certificate = 'uploads/student/' . $newPhoto;
         $new_student->save();
         return back();
-
-         
     }
     /**
      * Display the specified resource.
@@ -149,7 +148,7 @@ class StudantController extends Controller
             $Student->photo = 'uploads/student/' . $newPhoto;
         }
         $Student = new  studant;
-       
+
         $Student->user_id = Auth::id();
         $Student->Address = $request->Address;
         $Student->save();

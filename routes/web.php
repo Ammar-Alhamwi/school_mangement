@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('student.create');
+    return view('homepage.home');
 });
 
 Auth::routes();

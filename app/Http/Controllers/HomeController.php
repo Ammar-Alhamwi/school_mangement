@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\slider;
+use App\Models\studant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,8 @@ class HomeController extends Controller
     {
         if (Auth::user()->rool==0) {
             $silder=slider::all();
-            return view('home',compact('silder'));
+            $studant=studant::all()->where('user_id',Auth::user()->id);
+            return view('homepage.home2',compact('silder'),compact('studant'));
 
         }else{
 
