@@ -6,6 +6,7 @@ use App\Models\studant;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\student_info;
 
 
 
@@ -62,9 +63,9 @@ class StudantController extends Controller
         $newPhoto = time() . $photo->getClientOriginalName();
         $photo->move('uploads/student', $newPhoto);
         // //save certificate
-        //$certificate = $request->certificate;
-        //$newPhoto = time() . $certificate->getClientOriginalName();
-        //$certificate->move('uploads/student', $newPhoto);
+        $certificate = $request->certificate;
+        $newPhoto = time() . $certificate->getClientOriginalName();
+        $certificate->move('uploads/student', $newPhoto);
         $new_student = new studant;
         $new_student->user_id = Auth::id();
         $new_student->name_studant = $request->name_studant;
@@ -73,11 +74,23 @@ class StudantController extends Controller
         $new_student->division = $request->division;
         $new_student->class = $request->class;
         //$new_student->phone = $request->phone;
-        $new_student->gender = $request->gender;
-        $new_student->Address = $request->Address;
+        // $new_student->gender = $request->gender;
+        // $new_student->Address = $request->Address;
         $new_student->photo = 'uploads/student/' . $newPhoto;
-        //$new_student->certificate = 'uploads/student/' . $newPhoto;
+        $new_student->certificate = 'uploads/student/' . $newPhoto;
         $new_student->save();
+        $studant=studant::latest()->first()->id;
+        student_info::create([
+            'phone'=>$request->phone,
+            'gender'=>$request->gender,
+            'Address'=>$request->Address,
+            'student_id'=>$studant,
+            
+
+
+        ]);
+        
+        
         return redirect()->route('home');
     }
     /**
@@ -100,6 +113,12 @@ class StudantController extends Controller
         $studant = studant::all()->where('id', $id);
 
         return view('studentinfo.edit_admin', compact('studant'));
+    }
+    public function update_admin_notes(Request $request){
+        $student_info=student_info::find($request->id);
+        student_info::update([
+            'notes'=>$request->notes,
+        ]);
     }
     public function update_admin(Request $request)
     {

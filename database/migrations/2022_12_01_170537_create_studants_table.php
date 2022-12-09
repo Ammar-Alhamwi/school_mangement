@@ -21,12 +21,13 @@ class CreateStudantsTable extends Migration
             $table->string('name_studant')->nullabel();
             //$table->Integer('phone')->nullabel();
             $table->string('age')->nullabel();
-            $table->integer('gender')->nullabel();
-            //$table->string('certificate')->nullable();
+            // $table->integer('gender')->nullabel();
+            $table->string('certificate')->nullable();
             $table->Integer('accept');
             $table->integer('class')->nullable();
             $table->integer('division')->nullable();
-            $table->string('Address')->nullable();
+            
+            // $table->string('Address')->nullable();
             $table->string('photo')->nullable();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

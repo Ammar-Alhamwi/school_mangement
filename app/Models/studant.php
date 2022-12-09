@@ -20,4 +20,8 @@ protected $fillable = [
     return $this->belongsTo('App\Models\User', 'user_id' );
 }
 
+    public function student_info(){
+        return $this->hasOne('App/Models/student_info');
+    }
+
 }
