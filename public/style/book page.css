@@ -1,0 +1,27 @@
+.img-size{
+width: 100%;
+height: 32vw;
+object-fit: cover ;
+
+}
+.about-text{
+    text-align: center;
+    margin-top: 20px;
+    
+    
+}
+.about-textt h2 {
+    font-size: 80px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    color: #3586ff;
+
+}
+
+body
+{
+direction: rtl;
+text-align: right;
+font-family: 'Montserrat', sans-serif;
+}

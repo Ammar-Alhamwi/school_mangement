@@ -30,9 +30,9 @@ Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class,'
 //show class
 Route::get('/book', [App\Http\Controllers\BookController::class, 'index'] );
 //shwo subject on class
-Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'index'] );
-//donlode book
-Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
+Route::post('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'] )->name('show_sub');
+
+
 //show studant info
 Route::get('/show_info', [App\Http\Controllers\StudantController::class, 'show_info'])->name('show_info');
 //update and edit studante info

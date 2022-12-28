@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function indes(){
+    public function index(){
         $book=book::all();
 
         $silder=slider::all();
-        return view('book',compact('book'),compact('silder'));
+        return view('class.classes',compact('book'),compact('silder'));
 
 
     }
