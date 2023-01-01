@@ -20,6 +20,7 @@ class StudantStatuses extends Migration
             $table->string('note');
             $table->bigInteger('studant_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('studant_id')->references('id')->on('studants')->onDelete('cascade');
     });
 }

@@ -22,7 +22,7 @@ class CreateStudentInfosTable extends Migration
             $table->string('Address')->nullable();
             $table->Text('notes')->nullable();
             $table->foreign('student_id')->references('id')->on('studants')->onDelete('cascade');
-
+            $table->softDeletes();
         });
     }
 
