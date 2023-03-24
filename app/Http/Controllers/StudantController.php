@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\studant;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\student_info;
 
 
 
@@ -47,35 +47,51 @@ class StudantController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name_studant' =>  'required',
-            'age' =>  'required',
-            'certificate' =>  'required|image',
-            'Address' =>  'required',
-            'photo' =>  'required|image',
-            'accept' => '0'
-        ]);
+
+        // $this->validate($request, [
+        //     'name_studant' =>  'required',
+        //     'age' =>  'required',
+        //     'certificate' =>  'required|image',
+        //     'Address' =>  'required',
+        //     'photo' =>  'required|image',
+        //     'accept' => '0',
+        //      'phone' =>'required',
+        //      'gender'=>'required',
+        // ]);
         //save photo
         $photo = $request->photo;
         $newPhoto = time() . $photo->getClientOriginalName();
         $photo->move('uploads/student', $newPhoto);
-        //save certificate
+        // //save certificate
         $certificate = $request->certificate;
         $newPhoto = time() . $certificate->getClientOriginalName();
         $certificate->move('uploads/student', $newPhoto);
-        $studant = studant::create([
-            'user_id' =>  Auth::id(),
-            'name_studant' =>  $request->name_studant,
-            'age' =>   $request->age,
-            'certificate' =>  'uploads/student/' . $newPhoto,
-            'accept' => '0',
-            'photo' =>  'uploads/student/' . $newPhoto,
-            'division' => $request->division,
-            'Address' =>   $request->Address,
-            'class' => $request->class,
-        ]);
+        $new_student = new studant;
+        $new_student->user_id = Auth::id();
+        $new_student->name_studant = $request->name_studant;
+        $new_student->age = $request->age;
+        $new_student->accept = 0;
+        $new_student->division = $request->division;
+        $new_student->class = $request->class;
+        //$new_student->phone = $request->phone;
+        // $new_student->gender = $request->gender;
+        // $new_student->Address = $request->Address;
+        $new_student->photo = 'uploads/student/' . $newPhoto;
+        $new_student->certificate = 'uploads/student/' . $newPhoto;
+        $new_student->save();
+        $studant=studant::latest()->first()->id;
+        student_info::create([
+            'phone'=>$request->phone,
+            'gender'=>$request->gender,
+            'Address'=>$request->Address,
+            'student_id'=>$studant,
+            
 
-        return redirect()->back();
+
+        ]);
+        
+        
+        return redirect()->route('home');
     }
     /**
      * Display the specified resource.
@@ -97,6 +113,12 @@ class StudantController extends Controller
         $studant = studant::all()->where('id', $id);
 
         return view('studentinfo.edit_admin', compact('studant'));
+    }
+    public function update_admin_notes(Request $request){
+        $student_info=student_info::find($request->id);
+        student_info::update([
+            'notes'=>$request->notes,
+        ]);
     }
     public function update_admin(Request $request)
     {
@@ -144,7 +166,7 @@ class StudantController extends Controller
             $Student->photo = 'uploads/student/' . $newPhoto;
         }
         $Student = new  studant;
-       
+
         $Student->user_id = Auth::id();
         $Student->Address = $request->Address;
         $Student->save();

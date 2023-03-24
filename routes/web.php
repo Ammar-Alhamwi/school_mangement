@@ -14,15 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 //lgin admin and user
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //show mark sesone
-Route::get('/sesone1/{id}', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
+Route::get('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
 Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index'] );
 //create mark seson
 Route::get('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class,'create'])->name('student.sesone1');
@@ -32,9 +30,9 @@ Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class,'
 //show class
 Route::get('/book', [App\Http\Controllers\BookController::class, 'index'] );
 //shwo subject on class
-Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'index'] );
-//donlode book
-Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
+Route::post('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'] )->name('show_sub');
+
+
 //show studant info
 Route::get('/show_info', [App\Http\Controllers\StudantController::class, 'show_info'])->name('show_info');
 //update and edit studante info
@@ -43,10 +41,11 @@ Route::post('/update_admin', [App\Http\Controllers\StudantController::class, 'up
 
 
 //Route for register student
-Route::get('/student/create', 'App\Http\Controllers\StudantController@create')->name('student.create');
-Route::post('/student/store', 'App\Http\Controllers\StudantController@store')->name('student.store');
-//Route for admin ((register_student))
-Route::get('index/register', 'App\Http\Controllers\StudantStatusController@index');
-Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' );
 
-Route::get('/Studant/accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('student.accept');
+Route::get('/studentreg', 'App\Http\Controllers\StudantController@create')->name('student.create');
+Route::post('/studentstore', 'App\Http\Controllers\StudantController@store')->name('studentstore');
+//Route for admin ((register_student))
+Route::get('/dashboard', 'App\Http\Controllers\StudantStatusController@index');
+Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' )->name('Trashdelete');
+
+Route::get('accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('accept');
