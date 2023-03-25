@@ -47,6 +47,10 @@ Route::get('/studentreg', 'App\Http\Controllers\StudantController@create')->name
 Route::post('/studentstore', 'App\Http\Controllers\StudantController@store')->name('studentstore');
 //Route for admin ((register_student))
 Route::get('/dashboard', 'App\Http\Controllers\StudantStatusController@index');
-
+<<<<<<< dashnew
+Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' )->name('student.SoftDelete');
+=======
+Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' )->name('Trashdelete');
+>>>>>>> main
 
 Route::get('accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('accept');
