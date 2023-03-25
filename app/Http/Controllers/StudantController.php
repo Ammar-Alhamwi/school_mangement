@@ -63,9 +63,9 @@ class StudantController extends Controller
         $newPhoto = time() . $photo->getClientOriginalName();
         $photo->move('uploads/student', $newPhoto);
         // //save certificate
-        $certificate = $request->certificate;
-        $newPhoto = time() . $certificate->getClientOriginalName();
-        $certificate->move('uploads/student', $newPhoto);
+        // $certificate = $request->certificate;
+        // $newPhoto = time() . $certificate->getClientOriginalName();
+        // $certificate->move('uploads/student', $newPhoto);
         $new_student = new studant;
         $new_student->user_id = Auth::id();
         $new_student->name_studant = $request->name_studant;

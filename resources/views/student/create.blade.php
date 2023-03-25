@@ -17,7 +17,7 @@
                 بل إنها تعتبر البيت الثاني حيث تجد فيها التربية الحسنة والأصدقاء واللعب وممارسة النشاطات فإنها تساعد الطفل ليكبر ويصبح شخصا مسؤولا
             </p>
             <div class="btn-group">
-                <a class="btn-item">الصفحة الرئيسية</a>
+                <a  class="btn-item " href="{{ route('home2') }}">الصفحة الرئيسية</a>
                 <a class="btn-item">تسجيل حساب جديد</a>
 
             </div>
@@ -44,8 +44,8 @@
                     <option  name ="gender" value="{{0}}"  > ذكر</option>
                     <option name="gender" value="{{1}}"  > انثى</option>
                  </select> 
-                 <label> ادخل صورة الشهادة</label>
-                 <input type="file" name="certificate">
+                 {{-- <label> ادخل صورة الشهادة</label>
+                 <input type="file" name="certificate"> --}}
                  <label> ادخل صورة الطالب </label>
                  <input type="file" name="photo">
             </div>

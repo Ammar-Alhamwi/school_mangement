@@ -40,5 +40,13 @@ class HomeController extends Controller
         }
 
 
+    
     }
+    public function home2(){
+        $silder=slider::all();
+        $studant=studant::all()->where('user_id',Auth::user()->id);
+        return view('homepage.home2',compact('silder'),compact('studant'));
+
+    }
+    
 }

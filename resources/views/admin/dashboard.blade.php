@@ -142,7 +142,7 @@
 							   
 							   <li class="nav-item">
 							     <a class="nav-link" href="#">
-								   <span class="material-icons">المدير</span>
+								   <span class="material-icons">هدى الحلاق</span>
 								 </a>
 							   </li>
 							   
@@ -208,61 +208,52 @@
 							 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="selectAll">
 							 <label for="selectAll"></label></th>
-
 							 <th>الحالة</th>
 							 <th>الصف</th>
 							 <th>العنوان</th>
-							 <th>المواليد</th>
+							 <th>العمر</th>
 							 <th>اسم الطالب</th>
-                             
 							 </tr>
 						  </thead>
-
+						  
 						  <tbody>
-                            
-                          @foreach($student_info as $iteam)
+                            @foreach($student_info as $iteam)
                           @php
                               $i=0;
                               
                           @endphp
                           @if ($iteam->student->accept == 0)
-                           
-                            {{--جميع طلبات التسجيل --}}
+                           {{--جميع طلبات التسجيل --}}
 						      <tr>
 							 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
 							 <label for="checkbox1"></label></th>
 							 <th>
-								{{--الموافقة على الطالب --}}
+							    {{--الموافقة على الطالب --}}
 							    <a href="/{{$iteam->student->id}}"  type="button" class="btn btn"  >
-							   <i href="/{{$iteam->student->id}}" type="button" class="material-icons"  title="قبول">&#10003;</i>
-							   </a>
-							   {{-- رفض الطالب  --}}
-							   <a href="/Studant/Trashdelete/{{$iteam->student_id}}" type="button" class="btn btn" >
-								<i  href="/Studant/Trashdelete/{{$iteam->student_id}}" class="material-icons" data-toggle="tooltip" title="رفض">&#xE872;</i>
-								</a>
-							</th>
-							   
-                             
-							 <th>{{$iteam->student->class}}</th>
-							  <th>{{$iteam->Address}}</th>
-							 <th>{{$iteam->student->age}}</th>
-							 <th>{{$iteam->student->name_studant}}</th>
-                             
-							 </tr>
-							 
-							 
-                             @endif
-                             @endforeach  
-							 
-							 
-						  </tbody>
-						  
+                                    <i href="/{{$iteam->student->id}}" type="button" class="material-icons"  title="قبول">&#10003;</i>
+                                    </a>
+                                    {{-- رفض الطالب  --}}
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                        <i class="material-icons" data-toggle="tooltip" title="رفض">&#xE872;</i>
+                                        </a>
+                                 </th>
+                                 <th>{{$iteam->student->class}}</th>
+                                 <th>{{$iteam->Address}}</th>
+                                <th>{{$iteam->student->age}}</th>
+                                <th>{{$iteam->student->name_studant}}</th>
+                                
+                                </tr>
+                                
+                                
+                                @endif
+                                @endforeach  
+                                
+                                
+                             </tbody>
 					      
 					   </table>
-                    
-                      
-                    
+					   
 					   
 					   
 					   
@@ -369,13 +360,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+	
       <div class="modal-body">
+		<div class="form-group">
+		    <label>سبب الرفض</label>
+			<input type="text" class="form-control" required>
+			<hr>
+			<button type="button" class="btn btn-success">ارسال</button>
+		</div>
         <p>هل انت متاكد من حذف هذا السجل</p>
 		<p class="text-warning"><small>  لايمكن التراجع اذا اكدت هذا الفعل</small></p>
       </div>
+	  
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
-        <button type="button" class="btn btn-success">حذف</button>
+        <a href="/Studant/Trashdelete/{{$iteam->student_id}}" type="button" class="btn btn-success" >حذف</a>
+
+
       </div>
     </div>
   </div>
@@ -448,5 +449,4 @@
   </body>
   
   </html>
-
 
