@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home2', [App\Http\Controllers\HomeController::class, 'home2'])->name('home2');
 //show mark sesone
-Route::get('/sesone1/{id}', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
+Route::get('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
 Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index'] );
 //create mark seson
 Route::get('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class,'create'])->name('student.sesone1');
@@ -47,6 +47,6 @@ Route::get('/studentreg', 'App\Http\Controllers\StudantController@create')->name
 Route::post('/studentstore', 'App\Http\Controllers\StudantController@store')->name('studentstore');
 //Route for admin ((register_student))
 Route::get('/dashboard', 'App\Http\Controllers\StudantStatusController@index');
-Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete' )->name('student.SoftDelete');
 
-Route::get('/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('student.accept');
+
+Route::get('accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('accept');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\studant;
 
 class sesone1 extends Model
 {
@@ -15,7 +16,7 @@ class sesone1 extends Model
 
     ];
 
-    public function sesone1(){
+    public function studant(){
         return $this->belongsTo('App\Models\studant');
     }
 }

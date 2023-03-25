@@ -8,15 +8,21 @@ use Illuminate\Http\Request;
 
 class Sesone2Controller extends Controller
 {
-    public function index($id){
+    public function index()
+    {
+        $sesone2 = sesone2::all();
 
-        $sesone1 = sesone2::where('studant_id', $id)->get();
-
-        $studant=studant::where('id',$id)->first();
-        $phot=$studant->photo;
-        $avg=sesone2::Where('studant_id', $id)->pluck('value')->avg();
-        return view('sesone1',compact('sesone1'),compact('phot'),compact('avg'));
+        return view('marks.marks', compact('sesone2'));
     }
+    // public function index($id){
+
+    //     $sesone1 = sesone2::where('studant_id', $id)->get();
+
+    //     $studant=studant::where('id',$id)->first();
+    //     $phot=$studant->photo;
+    //     $avg=sesone2::Where('studant_id', $id)->pluck('value')->avg();
+    //     return view('sesone1',compact('sesone1'),compact('phot'),compact('avg'));
+    // }
     public function create()
     {
 
