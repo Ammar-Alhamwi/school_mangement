@@ -229,9 +229,9 @@
                                                         <label for="checkbox1"></label></th>
                                                 <th>
                                                     {{-- الموافقة على الطالب --}}
-                                                    <a href="/{{ $iteam->student->id }}" type="button"
+                                                    <a href="accept/{{ $iteam->student->id }}" type="button"
                                                         class="btn btn">
-                                                        <i href="/{{ $iteam->student->id }}" type="button"
+                                                        <i href="accept/{{ $iteam->student->id }}" type="button"
                                                             class="material-icons" title="قبول">&#10003;</i>
                                                     </a>
                                                     {{-- رفض الطالب  --}}
@@ -248,7 +248,7 @@
 
                                             </tr>
                                         @endif
-                                    @endforeach
+                                        @endforeach
 
 
                                 </tbody>
@@ -378,9 +378,9 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">رجوع</button>
-                                    <a href="/Studant/Trashdelete/{{ $iteam->student_id }}" type="button"
+                                    <a href="/Studant/Trashdelete/{{  $iteam->student->id }}" type="button"
                                         class="btn btn-success">حذف</a>
-
+                                        
 
                                 </div>
                             </div>
