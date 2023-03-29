@@ -48,11 +48,9 @@
                         <i class="material-icons">الطلاب</i>
                     </a>
                     <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                        
-                        <li><a href="/List of students1">الصف الاول</a></li>
-
-                        <li><a href="/List of students2"> الصف الثاني</a></li>
-                        <li><a href="/List of students3"> الصف الثالث</a></li>
+                        <li><a href={{ route('List_of_students1') }}>الصف الاول</a></li>
+                        <li><a href={{ route('List_of_students2') }}> الصف الثاني</a></li>
+                        <li><a href={{ route('List_of_students3') }}> الصف الثالث</a></li>
                     </ul>
                 </li>
 
@@ -249,7 +247,7 @@
                                                 <th>{{ $iteam->student->name_studant }}</th>
 
                                             </tr>
-                                        
+
 
                                 </tbody>
 
@@ -378,17 +376,17 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">رجوع</button>
-                                    <a href="/Studant/Trashdelete/{{  $iteam->student->id }}" type="button"
+                                    <a href="/Studant/Trashdelete/{{ $iteam->student->id }}" type="button"
                                         class="btn btn-success">حذف</a>
-                                        
-                                        
+
+
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     @endif
-                                        @endforeach
+                    @endforeach
 
                     <!----refuse-modal end--------->
 

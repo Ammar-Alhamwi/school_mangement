@@ -6,7 +6,10 @@ use App\Models\sesone1;
 use App\Models\sesone2;
 use App\Models\studant;
 use App\Models\student_info;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+
+
 
 class Sesone1Controller extends Controller
 {
@@ -31,40 +34,56 @@ class Sesone1Controller extends Controller
     {
         $studant_info = student_info::all();
 
-        return view('admin.List of students1')->with('student_info', $studant_info);;
+        return view('admin.List_of_students1')->with('student_info', $studant_info);
     }
     public function create2(Request $request)
     {
         $studant_info = student_info::all();
 
-        return view('admin.List of students2')->with('student_info', $studant_info);;
+        return view('admin.List_of_students2')->with('student_info', $studant_info);
     }
     public function create3(Request $request)
     {
         $studant_info = student_info::all();
 
-        return view('admin.List of students3')->with('student_info', $studant_info);;
+        return view('admin.List_of_students3')->with('student_info', $studant_info);
     }
     public function insertmarks(Request $request)
     {
-        $studant_info = student_info::all();
 
-        return view('admin.insertmarks')->with('student_info', $studant_info);;
+        return view('admin.insertmarks')->with('id', $request->id);
     }
-    
 
-    public function store(Request $request)
+
+    public function stor_mark(Request $request)
     {
-        $this->validate($request, [
-            'id' =>  'required',
-            'name_sub' =>  'required',
-            'value' =>  'required',
+
+        sesone1::create([
+
+            'studant_id' => $request->id,
+            'name_sub' => $request->name_sub1,
+            'value' => $request->value1,
         ]);
         sesone1::create([
+
             'studant_id' => $request->id,
-            'name_sub' => $request->name_sub,
-            'value' => $request->value,
+            'name_sub' => $request->name_sub2,
+            'value' => $request->value2,
         ]);
+        sesone1::create([
+
+            'studant_id' => $request->id,
+            'name_sub' => $request->name_sub3,
+            'value' => $request->value3,
+        ]);
+        sesone1::create([
+
+            'studant_id' => $request->id,
+            'name_sub' => $request->name_sub4,
+            'value' => $request->value4,
+        ]);
+
+
+        return redirect()->route('home');
     }
-    
 }

@@ -13,11 +13,12 @@ class sesone1 extends Model
         'studant_id',
         'name_sub',
         'value',
-        
+
 
     ];
 
-    public function studant(){
+    public function studant()
+    {
         return $this->belongsTo('App\Models\studant');
     }
 }
