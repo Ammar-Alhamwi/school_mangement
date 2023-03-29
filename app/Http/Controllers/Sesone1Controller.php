@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\sesone1;
 use App\Models\sesone2;
 use App\Models\studant;
+use App\Models\student_info;
 use Illuminate\Http\Request;
 
 class Sesone1Controller extends Controller
@@ -26,11 +27,32 @@ class Sesone1Controller extends Controller
 
         return view('marks.marks', compact('sesone1'));
     }
-    public function create()
+    public function create(Request $request)
     {
+        $studant_info = student_info::all();
 
-        return view('studant.session1');
+        return view('admin.List of students1')->with('student_info', $studant_info);;
     }
+    public function create2(Request $request)
+    {
+        $studant_info = student_info::all();
+
+        return view('admin.List of students2')->with('student_info', $studant_info);;
+    }
+    public function create3(Request $request)
+    {
+        $studant_info = student_info::all();
+
+        return view('admin.List of students3')->with('student_info', $studant_info);;
+    }
+    public function insertmarks(Request $request)
+    {
+        $studant_info = student_info::all();
+
+        return view('admin.insertmarks')->with('student_info', $studant_info);;
+    }
+    
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -44,4 +66,5 @@ class Sesone1Controller extends Controller
             'value' => $request->value,
         ]);
     }
+    
 }

@@ -48,9 +48,11 @@
                         <i class="material-icons">الطلاب</i>
                     </a>
                     <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                        <li><a href="#">الصف الاول</a></li>
-                        <li><a href="#"> الصف الثاني</a></li>
-                        <li><a href="#"> الصف الثالث</a></li>
+                        
+                        <li><a href="/List of students1">الصف الاول</a></li>
+
+                        <li><a href="/List of students2"> الصف الثاني</a></li>
+                        <li><a href="/List of students3"> الصف الثالث</a></li>
                     </ul>
                 </li>
 
@@ -247,9 +249,7 @@
                                                 <th>{{ $iteam->student->name_studant }}</th>
 
                                             </tr>
-                                        @endif
-                                        @endforeach
-
+                                        
 
                                 </tbody>
 
@@ -381,11 +381,14 @@
                                     <a href="/Studant/Trashdelete/{{  $iteam->student->id }}" type="button"
                                         class="btn btn-success">حذف</a>
                                         
+                                        
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                                        @endforeach
 
                     <!----refuse-modal end--------->
 

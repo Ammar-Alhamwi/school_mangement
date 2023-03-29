@@ -36,8 +36,14 @@
                 <input type="text" class="fname" name="name_studant" placeholder="الاسم الكامل"/>
                  <input type="text" class="fname" name="Address" placeholder="العنوان"/>
                  <input type="text" class="fname" name="phone" placeholder="رقم الهاتف"/>
-                 <label> المواليد</label>
-                 <input type="date" name="age">
+                 {{-- <input type="text" class="fname" name="age" placeholder="الصف"/> --}}
+                 <select name="age">
+                    <option value=" course-type"  name="gender"selected >الصف</option>
+                    <option  name ="gender" value="{{1}}"  > الصف الاول</option>
+                    <option name="gender" value="{{2}}"  > الصف الثاني</option>
+                    <option name="gender" value="{{2}}"  > الصف الثالث </option>
+                 </select> 
+                 {{-- <input type="date" name="age"> --}}
 
                   <select name="gender">
                     <option value=" course-type"  name="gender"selected > الجنس</option>

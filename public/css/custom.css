@@ -265,7 +265,7 @@ overflow:auto;
 		  z-index:9;
 		  position:relative;
 		  padding:15px 30px;
-		  background-color:#353b48;
+		  background-color:#1851ca;
 	 }
 	 
 	 .xd-topbar{
@@ -328,7 +328,7 @@ overflow:auto;
 	   }
 	   
 	   .navbar{
-		   background-color:#353B48;
+		   background-color:#3057aa;
 		   color:#fff;
 	   }
 	   
@@ -485,7 +485,7 @@ background-color:rgba(0,0,0,0.09);
 }
 	   
 	   .table-title{
-		   background:#353b48;
+		   background:#214aa1;
 		   color:#fff;
 		   position:sticky;
 		   top:0;

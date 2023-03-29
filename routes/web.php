@@ -25,7 +25,7 @@ Route::get('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index'])
 Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index']);
 //create mark seson
 Route::get('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'create'])->name('student.sesone1');
-Route::post('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'store'])->name('student.sesone1');
+Route::post('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'store'])->name('studentsave.sesone1');
 Route::get('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class, 'create'])->name('student.sesone2');
 Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class, 'store'])->name('student.sesone2');
 //show class
@@ -47,10 +47,12 @@ Route::get('/studentreg', 'App\Http\Controllers\StudantController@create')->name
 Route::post('/studentstore', 'App\Http\Controllers\StudantController@store')->name('studentstore');
 //Route for admin ((register_student))
 Route::get('/dashboard', 'App\Http\Controllers\StudantStatusController@index');
-
-
-
 Route::get('/Studant/Trashdelete/{id}', 'App\Http\Controllers\StudantStatusController@SoftDelete')->name('Trashdelete');
-
-
 Route::get('accept/{id}', 'App\Http\Controllers\StudantStatusController@accept')->name('accept');
+// Route for admin((insert marks))
+// قائمة طلاب الصف الاول 
+Route::get('/List of students1', [App\Http\Controllers\Sesone1Controller::class, 'create'])->name('student.sesone1');
+//قائمة طلاب الصف الثاني 
+Route::get('/List of students2', [App\Http\Controllers\Sesone1Controller::class, 'create2'])->name('student.sesone1');
+// قائمة طلاب الصف الثالث
+Route::get('/List of students3', [App\Http\Controllers\Sesone1Controller::class, 'create3'])->name('student.sesone1');

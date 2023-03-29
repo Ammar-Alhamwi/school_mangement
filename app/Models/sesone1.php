@@ -12,7 +12,8 @@ class sesone1 extends Model
     protected $fillable = [
         'studant_id',
         'name_sub',
-        'value'
+        'value',
+        
 
     ];
 
