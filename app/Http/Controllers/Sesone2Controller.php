@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class Sesone2Controller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $sesone2 = sesone2::all();
+        $sesone2 = sesone2::all()->where('studant_id',$request->id );
 
         return view('marks.marks', compact('sesone2'));
     }

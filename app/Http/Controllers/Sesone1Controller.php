@@ -24,9 +24,9 @@ class Sesone1Controller extends Controller
 
     //     return view('sesone1', compact('sesone1'), compact('phot'), compact('avg'));
     // }
-    public function index()
+    public function index(Request $request)
     {
-        $sesone1 = sesone1::all();
+        $sesone1 = sesone1::all()->where('studant_id',$request->id );
 
         return view('marks.marks', compact('sesone1'));
     }

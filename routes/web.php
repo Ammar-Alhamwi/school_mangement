@@ -21,8 +21,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home2', [App\Http\Controllers\HomeController::class, 'home2'])->name('home2');
 //show mark sesone
-Route::get('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index']);
-Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index']);
+Route::post('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index'])->name('sesone1');
+Route::post('/sesone2', [App\Http\Controllers\Sesone2Controller::class, 'index'])->name('sesone2');
 //create mark seson
 Route::get('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'create'])->name('student.sesone1');
 Route::post('/student/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'stor_mark'])->name('/student/sesone1');
@@ -39,7 +39,7 @@ Route::get('/show_info', [App\Http\Controllers\StudantController::class, 'show_i
 //update and edit studante info
 Route::get('/edit_admin/{id}', [App\Http\Controllers\StudantController::class, 'edit_admin'])->name('edit_admin');
 Route::post('/update_admin', [App\Http\Controllers\StudantController::class, 'update_admin'])->name('update_admin');
-
+Route::post('/info', [App\Http\Controllers\StudantController::class, 'info'])->name('info');
 
 //Route for register student
 

@@ -102,10 +102,10 @@ class StudantController extends Controller
     public function show($id)
     {
     }
-    public function show_info($id)
+    public function info(Request $request)
     {
-        $studentinfo = studant::where('id', $id)->first();
-        return view('studentinfo.show')->with('studentinfo', $studentinfo);
+        $studentinfo = studant::where('id', $request->id)->first();
+        return view('info.info')->with('studentinfo', $studentinfo);
     }
 
     public function edit_admin($id)

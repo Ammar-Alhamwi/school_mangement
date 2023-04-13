@@ -72,7 +72,14 @@
 
                             @foreach ($studant as $item)
                                 <li class="menu-item">
-                                    <a href="#">{{ $item->name_studant }}</a>
+
+                                    <form action="{{ route('info') }}"method="POST"enctype="multipart/form-data">
+                                        @csrf
+                                        <button class="btn btn-primary" type="submit" name='id'
+                                            value={{ $item->id }}>{{ $item->name_studant }}</button>
+
+
+                                    </form>
                                 </li>
                             @endforeach
                         </ul>
@@ -84,7 +91,8 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="dropdown-item" href="{{ route('logout') }}"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre onclick="event.preventDefault();
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                                    onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('تسجيل الخروج') }}
                                 </a>
@@ -137,7 +145,8 @@
             </div>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
