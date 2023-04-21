@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    //effe
     public function index(){
         $book=book::all();
 
