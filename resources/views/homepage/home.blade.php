@@ -106,7 +106,7 @@
             </div>
 
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="img/4.jfif" class="d-block w-100" alt="...">
+                <img src="img/42.jfif" class="d-block w-100" alt="...">
             </div>
         </div>
 
@@ -255,5 +255,3 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
 </script>
 </body>
-
-</html>

@@ -71,6 +71,7 @@
 
 
                             @foreach ($studant as $item)
+                            @if($item->accept==1)
                                 <li class="menu-item">
 
                                     <form action="{{ route('info') }}"method="POST"enctype="multipart/form-data">
@@ -81,6 +82,7 @@
 
                                     </form>
                                 </li>
+                                @endif
                             @endforeach
                         </ul>
                     </li>

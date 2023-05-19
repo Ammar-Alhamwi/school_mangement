@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS User Profile Card</title>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/info.css">
     <link rel="stylesheet" href="style/foteer.css">
 
     <style>
@@ -110,13 +110,13 @@
                     <ul class="menu">
 
                         <li class="menu-item">
-                            <a href="#"> الصفحة الرئيسية</a>
+                            <a href="/home2"> الصفحة الرئيسية</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">المناهج الدراسية</a>
                         </li>
 
-                        <li class="menu-item menu-item-has-children">
+                        <!-- <li class="menu-item menu-item-has-children">
                             <a href="#" data-toggle="sub-menu">ابنائي<i class="plus"></i></a>
                             <ul class="sub-menu">
                                 <li class="menu-item">
@@ -129,16 +129,16 @@
                                     <a href="#">الابن الثالث</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="menu-item menu-item-has-children">
                             <a href="#" data-toggle="sub-menu">انضم الينا<i class="plus"></i></a>
                             <ul class="sub-menu">
                                 <li class="menu-item">
-                                    <a href="#">تسجيل الدخول </a>
+                                    <a href="/login">تسجيل الدخول </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#">انشاء حساب </a>
+                                    <a href="/register">انشاء حساب </a>
                                 </li>
 
                             </ul>
@@ -159,7 +159,7 @@
         @csrf
         <div class="wrapper">
             <div class="left">
-                <img src="img/IMG_20221126_201622.jpg" alt="user" width="100">
+                <img src="{{$studentinfo->photo}}" alt="user" width="100">
                 <button class="glow-on-hover" type="button" style="font-size: 20px;">سلوك الطالب </button>
 
 
@@ -184,7 +184,7 @@
                         </div>
                         <div class="col-md-9 text-secondary">
                             <div style="direction: rtl; font-size: 15px;border: solid 1.5px #0c203f; padding: 4px;">
-                                {{$studentinfo->class}}</div>
+                                {{$studentinfo->age}}</div>
                         </div>
                     </div>
 
@@ -243,4 +243,5 @@
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </body>
 
-</html>
+</html> 
+

@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -224,30 +226,35 @@
                                             $i = 0;
                                             
                                         @endphp
-                                        @if ($iteam->student->accept == 1 and $iteam->student->age == 2)
+                                        @if ($iteam->student->accept == 1 and $iteam->student->age ==2)
                                             <tr>
 
                                                 <th><span class="custom-checkbox">
 
                                                 </th>
                                                 <th>
-                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                                        <i class="material-icons" data-toggle="tooltip"
-                                                            title="قبول">&#10003;</i>
-                                                    </a>
+                                                    <form
+                                                        action="{{ route('insertmarks') }}"method="POST"enctype="multipart/form-data">
+                                                        @csrf
+                                                        <button class="btn btn-primary" type="submit" name='id'
+                                                            value={{ $iteam->id }}>اادخال</button>
+
+
+                                                    </form>
+                                                    {{-- <a href="/insertmarks" class="edit" data-toggle="modal">
+								  <i  href="/insertmarks"class= "material-icons" data-toggle="tooltip" title="قبول">&#10003;</i>
+								  </a> --}}
 
                                                 </th>
                                                 <th>
-                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                                        <i class="material-icons" data-toggle="tooltip"
-                                                            title="قبول">87%</i>
-                                                    </a>
+                                                    {{-- <a href="/insertmarks" class="edit" data-toggle="modal">
+							   <i  href="/insertmarks"class="material-icons" data-toggle="tooltip" title="قبول">87%</i>
+							   </a> --}}
 
                                                 </th>
 
                                                 <th>90%</th>
                                                 <th>3</th>
-
                                                 <th>{{ $iteam->student->name_studant }}</th>
                                             </tr>
                                         @endif
@@ -292,79 +299,80 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">ادخال علامه طالب</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button href="/insertmarks" type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        {{-- <div class="modal-body">
+
+													  
+													  <div class="form-group">
+														  
+														  <input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														  <br><br>
+														  <label > ادخل علامة الطالب</label>
+														  <input type="text" class="form-control" required>
+													  </div>
+													  <div class="form-group">
+														  
+														<input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														<br><br>
+														<label > ادخل علامة الطالب</label>
+														<input type="text" class="form-control" required>
+													</div>
+													<div class="form-group">
+														  
+														<input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														<br><br>
+														<label > ادخل علامة الطالب</label>
+														<input type="text" class="form-control" required>
+													</div>
+													<div class="form-group">
+														  
+														<input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														<br><br>
+														<label > ادخل علامة الطالب</label>
+														<input type="text" class="form-control" required>
+													</div>
+													<div class="form-group">
+														  
+														<input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														<br><br>
+														<label > ادخل علامة الطالب</label>
+														<input type="text" class="form-control" required>
+													</div>
+													<div class="form-group">
+														  
+														<input type="text" class="fname" name="name" placeholder="  اسم المادة"/>
+														<br><br>
+														<label > ادخل علامة الطالب</label>
+														<input type="text" class="form-control" required>
+													</div>
+													 
+													  <div class="modal-body">
+														<p>   هل انت متاكد من العلامة    </p>
+														<p class="text-warning"><small>  لايمكن التراجع اذا اكدت هذا الفعل</small></p>
+													  </div>
+													</div>
+													<div class="modal-footer">
+													  <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
+													  <button type="button" class="btn btn-success">حفظ </button>
+													</div>
+												  </div>
+												</div>
+											  </div>
+											 --}}
 
 
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" class="fname" name="name" placeholder="  اسم المادة" />
-                                <br><br>
-                                <label> ادخل علامة الطالب</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-
-                            <div class="modal-body">
-                                <p> هل انت متاكد من العلامة </p>
-                                <p class="text-warning"><small> لايمكن التراجع اذا اكدت هذا الفعل</small></p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
-                            <button type="button" class="btn btn-success">حفظ </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!----accept-modal end--------->
-
-
-
+                        <!----accept-modal end--------->
 
 
 
-            <!----add-modal start---------
+
+
+
+                        <!----add-modal start---------
   <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
    <div class="modal-dialog" role="document">
    <div class="modal-content">
@@ -418,53 +426,53 @@
   --->
 
 
-            <!----footer-design------------->
+                        <!----footer-design------------->
 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="footer-in">
+                        <footer class="footer">
+                            <div class="container-fluid">
+                                <div class="footer-in">
+
+                                </div>
+                            </div>
+                        </footer>
+
+
+
 
                     </div>
+
                 </div>
-            </footer>
 
 
 
-
-        </div>
-
-    </div>
-
-
-
-    <!-------complete html----------->
+                <!-------complete html----------->
 
 
 
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+                <!-- Optional JavaScript -->
+                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <script src="js/jquery-3.3.1.slim.min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/jquery-3.3.1.min.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".xp-menubar").on('click', function() {
-                $("#sidebar").toggleClass('active');
-                $("#content").toggleClass('active');
-            });
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $(".xp-menubar").on('click', function() {
+                            $("#sidebar").toggleClass('active');
+                            $("#content").toggleClass('active');
+                        });
 
-            $('.xp-menubar,.body-overlay').on('click', function() {
-                $("#sidebar,.body-overlay").toggleClass('show-nav');
-            });
+                        $('.xp-menubar,.body-overlay').on('click', function() {
+                            $("#sidebar,.body-overlay").toggleClass('show-nav');
+                        });
 
-        });
-    </script>
+                    });
+                </script>
 
 
 
