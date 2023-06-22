@@ -197,6 +197,14 @@
                                         </a>
 
                                     </div>
+                                    <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+                                    
+                                        <a href={{ route('homeadmin') }} class="btn btn-success" >
+                                            <i class="material-icons">&#xE147;</i>
+                                            <span>الصفحة الرئيسية</span>
+                                        </a>
+
+                                    </div>
                                 </div>
                             </div>
 

@@ -35,8 +35,8 @@ class HomeController extends Controller
 
         }else{
 
-            $silder=slider::all();
-            return view('home_admin',compact('silder'));
+            $studant=studant::all()->where('user_id',Auth::user()->id);
+            return view('homepage.home_admin',compact('studant'));
         }
 
 

@@ -20,6 +20,7 @@ Auth::routes();
 //login admin and user
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home2', [App\Http\Controllers\HomeController::class, 'home2'])->name('home2');
+Route::get('/homeadmin', [App\Http\Controllers\HomeController::class, 'index'])->name('homeadmin');
 //show mark sesone
 Route::post('/sesone1', [App\Http\Controllers\Sesone1Controller::class, 'index'])->name('sesone1');
 Route::post('/sesone2', [App\Http\Controllers\Sesone2Controller::class, 'index'])->name('sesone2');
@@ -31,7 +32,7 @@ Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class, 
 //show class
 Route::get('/book', [App\Http\Controllers\BookController::class, 'index']);
 //shwo subject on class
-Route::post('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'])->name('show_sub');
+Route::get('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'])->name('show_sub');
 
 
 //show studant info
@@ -57,3 +58,5 @@ Route::get('/List_of_students1', [App\Http\Controllers\Sesone1Controller::class,
 Route::get('/List_of_students2', [App\Http\Controllers\Sesone1Controller::class, 'create2'])->name('List_of_students2');
 // قائمة طلاب الصف الثالث
 Route::get('/List_of_students3', [App\Http\Controllers\Sesone1Controller::class, 'create3'])->name('List_of_students3');
+//سلوك الطالب 
+Route::get('/behaviour', [App\Http\Controllers\StudentInfoController::class, 'index'])->name('behaviour');
