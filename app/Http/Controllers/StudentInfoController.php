@@ -16,4 +16,10 @@ class StudentInfoController extends Controller
 
         }
     }
+    public function show(){
+
+        exec('C:/ProgramData/Anaconda3/python.exe C:/Users/AMMAR/Untitled1.ipynb');
+        
+
+    }
 }

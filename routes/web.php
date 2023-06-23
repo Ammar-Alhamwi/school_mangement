@@ -32,7 +32,7 @@ Route::post('/student/sesone2', [App\Http\Controllers\Sesone2Controller::class, 
 //show class
 Route::get('/book', [App\Http\Controllers\BookController::class, 'index']);
 //shwo subject on class
-Route::get('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'])->name('show_sub');
+Route::post('/show_sub', [App\Http\Controllers\SubjectNameController::class, 'index'])->name('show_sub');
 
 
 //show studant info
@@ -60,3 +60,5 @@ Route::get('/List_of_students2', [App\Http\Controllers\Sesone1Controller::class,
 Route::get('/List_of_students3', [App\Http\Controllers\Sesone1Controller::class, 'create3'])->name('List_of_students3');
 //سلوك الطالب 
 Route::get('/behaviour', [App\Http\Controllers\StudentInfoController::class, 'index'])->name('behaviour');
+
+Route::get('/attendance', 'App\Http\Controllers\StudentInfoController@show')->name('attendance');

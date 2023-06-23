@@ -33,10 +33,10 @@
             </div>
             <div class="info" style="direction: rtl;">
                 
-                 
-                 
                 
-            <button type="submit">  حضور الطالب</button>
+                <a href={{ route('attendance') }}>الصف الاول</a>
+                
+                
             <button type="submit">  نسبة انتباه الطالب </button>
             <button type="submit"> مشاركة الطالب  </button>
             <button type="submit"> نوم  الطالب  </button>
